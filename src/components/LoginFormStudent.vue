@@ -43,7 +43,7 @@ onMounted(()=>{
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form @click.prevent="authStore.handleLogin">
+        <form @click.prevent="authStore.studentLogin">
           <div class="flex flex-col gap-6">
             <div class="grid gap-3">
               <Label for="email">Email</Label>

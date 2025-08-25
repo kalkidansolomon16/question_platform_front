@@ -56,6 +56,7 @@ const registerStudent = async()=>{
     model.value.student.password = ""
     model.value.student.phone = ""
     model.value.student.address = ""
+    router.push('/studentlogin')
 }
 </script>
 

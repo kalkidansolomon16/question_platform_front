@@ -7,17 +7,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    data-slot="sidebar-content"
-    data-sidebar="content"
-    class="z-0"
+  <th
+    data-slot="table-head"
     :class="
       cn(
-        'z-0 flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
+        'text-muted-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
         props.class,
       )
     "
   >
     <slot />
-  </div>
+  </th>
 </template>

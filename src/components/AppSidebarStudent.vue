@@ -15,24 +15,20 @@ import {
 const items = [
   {
     title: "Dashboard",
-    url: "/admin",
+    url: "/studentdashboard",
     icon: Home,
   },
-  {
-    title: "Students",
-    url: "/student",
-    icon: User,
-  },
+
   {
     title: "Questions",
-    url: "/questions",
+    url: "/studentquestions",
     icon: FileQuestion,
   },
-  {
-    title: "Result",
-    url: "#",
-    icon: Search,
-  },
+  // {
+  //   title: "Result",
+  //   url: "#",
+  //   icon: Search,
+  // },
   {
     title: "Settings",
     url: "#",

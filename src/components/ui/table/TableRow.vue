@@ -7,17 +7,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    data-slot="sidebar-content"
-    data-sidebar="content"
-    class="z-0"
+  <tr
+    data-slot="table-row"
     :class="
       cn(
-        'z-0 flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
+        'hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors',
         props.class,
       )
     "
   >
     <slot />
-  </div>
+  </tr>
 </template>
