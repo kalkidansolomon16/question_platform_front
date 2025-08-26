@@ -70,15 +70,15 @@
       <div v-if="timeLeft <= 0" class="mt-6 text-red-700 font-bold">
          ⏰ Time is up! Test closed.
        </div>
-            <div class="flex gap-2 mt-4 items-center justify-end">
-           <button @click="nextPage(currentPage-1)" :disabled="currentPage===1" class="px-3 py-1  rounded disabled:opacity-50 cursor-pointer">
-             <i class="fa-solid fa-arrow-left"></i>
+            <div class="flex gap-2 mt-4 items-center justify-end mr-5 text-white">
+           <button @click="nextPage(currentPage-1)" :disabled="currentPage===1" class="px-3 py-1 disabled:opacity-50 cursor-pointer bg-green-600 rounded-sm hover:bg-green-800">
+            Previous
            </button>
-           <button v-for="page in lastPage" :key="page" @click="nextPage(page)" :class="['px-3 py-1 rounded',page===currentPage?'bg-blue-500 text-white cursor-pointer':'bg-transparent cursor-pointer']">
+           <!-- <button v-for="page in lastPage" :key="page" @click="nextPage(page)" :class="['px-3 py-1 rounded',page===currentPage?'bg-blue-500 text-white cursor-pointer':'bg-transparent cursor-pointer']">
            {{ page }}
-           </button>
-           <button @click="nextPage(currentPage+1)" :disabled="currentPage===lastPage" class="px-3 py-1  rounded disabled:opacity-50 cursor-pointer">
-           <i class="fa-solid fa-arrow-right"></i>
+           </button> -->
+           <button @click="nextPage(currentPage+1)" :disabled="currentPage===lastPage" class="px-3 py-1  disabled:opacity-50 cursor-pointer bg-green-600 rounded-sm hover:bg-green-800">
+           Next
            </button>
              </div>
 
@@ -100,7 +100,7 @@ const totalQuestions = computed(() => Object.keys(answerKey.value).length)
 const showExistingQuestion = ref(false)
 const existingQuestions = ref([]);
 const currentPage = ref(1);
-const perPage = ref(3);
+const perPage = ref(1);
 const lastPage = ref(1);
 
 const quizDuration = 2 * 60

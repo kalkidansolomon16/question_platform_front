@@ -10,16 +10,16 @@ import LoginForm from "@/components/LoginForm.vue"
 
 </script>
 
-<style>
-body {
+<style scoped>
+/* .container {
     position: relative;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     overflow: hidden;
-}
+} */
 
-body::before {
+.container::before {
     content: "";
     position: absolute;
     top: 0;

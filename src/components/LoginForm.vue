@@ -31,6 +31,7 @@ onMounted(()=>{
     }
  
 })
+
 </script>
 
 <template>
@@ -69,13 +70,13 @@ onMounted(()=>{
             </div>
             <div class="flex flex-col gap-3">
               <Button type="submit" class="w-full bg-blue-400 hover:bg-blue-600"> Login </Button>
-              <Button variant="outline" class="w-full">
+              <!-- <Button variant="outline" class="w-full">
                 Login with Google
-              </Button>
+              </Button> -->
             </div>
           </div>
           <div class="mt-4 text-center text-sm">
-            Don't have an account?
+            click here if you are a student?
             <a href="#" class="underline underline-offset-4" @click="router.push('/signup')"> Sign up </a>
           </div>
         </form>
@@ -83,3 +84,6 @@ onMounted(()=>{
     </Card>
   </div>
 </template>
+<style scoped>
+
+</style>

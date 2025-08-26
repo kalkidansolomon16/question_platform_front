@@ -38,7 +38,7 @@ const getTotalQuestions = async()=>{
 
 const currentStudent = ref(null);
 onMounted(() => {
- 
+//  window.location.reload();
   getTotalQuestions();
   const authStore = useAuthStore();
   const router = useRouter();

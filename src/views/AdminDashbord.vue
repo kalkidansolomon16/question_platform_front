@@ -65,7 +65,9 @@ onMounted(() => {
   authStore.verifyLogin(router);
 });
 </script>
+<style scoped>
 
+</style>
 <template>
     <div>
       <div class="ml-63">

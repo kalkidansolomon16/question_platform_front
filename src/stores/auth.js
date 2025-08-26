@@ -42,7 +42,7 @@ export const useAuthStore = defineStore("auth", {
       localStorage.setItem('studentID', response.data.student.id);
     },
         async fetchStudent() {
-      router.push('/admin');
+      router.push('/studentdashboard');
       const response = await axios.get(`${this.apiEndPoint}/student`);
       this.student = response;
       console.log('student', this.student);

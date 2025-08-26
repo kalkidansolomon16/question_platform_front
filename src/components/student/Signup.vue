@@ -113,10 +113,10 @@ const registerStudent = async()=>{
         <FormMessage />
       </FormItem>
     </FormField>
-                  <Button type="submit" class="w-full bg-blue-400 hover:bg-blue-600" @click="registerStudent"> Sign Up </Button>
+                  <Button type="submit" class="w-full bg-blue-400 hover:bg-blue-600" @click="registerStudent">Sign Up</Button>
                     <div class="mt-4 text-center text-sm">
             Do you have an account?
-            <a href="#" class="underline underline-offset-4" @click="router.push('/')"> Sign in </a>
+            <a href="#" class="underline underline-offset-4" @click="router.push('/studentlogin')">Sign in</a>
           </div>
   </div>
 </template>
