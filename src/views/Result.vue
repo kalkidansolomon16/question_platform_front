@@ -45,14 +45,14 @@ const props = defineProps({
 const currentPage = ref(1)
 const lastPage = ref(1)
 const perPage = ref(10)
-const students = ref([])
-const fetchStudents = async () => {
+const studentsResult = ref([])
+const fetchStudentsResult = async () => {
   try {
-    const response = await axios.get(`https://kalkidan.net/api/students?page=${currentPage.value}&per_page=${perPage.value}`);
-    console.log('Fetched students:', response.data);
+    const response = await axios.get(`https://kalkidan.net/api/results?page=${currentPage.value}&per_page=${perPage.value}`);
+    console.log('Fetched students:', response.data.result.data);
     currentPage.value = response.data.current_page;
     lastPage.value = response.data.last_page;
-    students.value = response.data.students.data;
+    studentsResult.value = response.data.result.data;
   } catch (error) {
     console.error('Error fetching students:', error);
   }
@@ -60,11 +60,11 @@ const fetchStudents = async () => {
 const changePage = (page)=>{
     if(page >=1 && page <= lastPage.value){
         currentPage.value = page
-        fetchStudents()
+        fetchStudentsResult()
     }
 }
 onMounted(() => {
- fetchStudents();
+ fetchStudentsResult();
 });
 </script>
 
@@ -90,22 +90,17 @@ onMounted(() => {
           #
         </TableHead>
         <TableHead>name</TableHead>
-        <TableHead>email</TableHead>
-        <TableHead>phone</TableHead>
-        <TableHead>
-          Adress
-        </TableHead>
+        <TableHead>result</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow v-for="student in students" :key="student.id" >
+      <TableRow v-for="result in studentsResult" :key="result.id" >
         <TableCell class="font-medium">
-          {{ student.id }}
+          {{ result.id }}
         </TableCell>
-        <TableCell class="pb-5">{{ student.name }}</TableCell>
-        <TableCell class="pb-5">{{ student.email }}</TableCell>
-        <TableCell class="pb-5">{{ student.phone }}</TableCell>
-        <TableCell class="pb-5">{{ student.address }}</TableCell>
+        <TableCell class="pb-5">{{ result.student.name }}</TableCell>
+        <TableCell class="pb-5">{{ result.score }}</TableCell>
+    
     </TableRow>
 </TableBody>
 </Table>

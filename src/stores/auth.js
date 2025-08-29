@@ -5,7 +5,7 @@ import router from "@/router";
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
-    apiEndPoint : "http://127.0.0.1:8000/api",
+    apiEndPoint : "https://kalkidan.net/api",
     email: null,
     password: null,
     student: null

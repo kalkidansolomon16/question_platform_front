@@ -24,11 +24,11 @@ const items = [
     url: "/studentquestions",
     icon: FileQuestion,
   },
-  // {
-  //   title: "Result",
-  //   url: "#",
-  //   icon: Search,
-  // },
+  {
+    title: "Show Result",
+    url: "/show-result",
+    icon: Search,
+  },
   {
     title: "Settings",
     url: "#",

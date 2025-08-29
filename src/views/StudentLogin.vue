@@ -1,5 +1,5 @@
 <template>
-    <div class="container flex h-screen w-full ml-240 items-center justify-right px-4">
+    <div class="container flex h-screen lg:w-full lg:ml-240 items-center justify-right px-4">
     <LoginFormStudent />
   </div>
 </template>
@@ -10,16 +10,16 @@ import LoginFormStudent from "@/components/LoginFormStudent.vue"
 
 </script>
 
-<style scoped>
-/* .container {
+<style >
+body {
     position: relative;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     overflow: hidden;
-} */
+}
 
-.container::before {
+body::before {
     content: "";
     position: absolute;
     top: 0;

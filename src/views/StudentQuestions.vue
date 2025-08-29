@@ -11,20 +11,19 @@
               <RouterView />
             </main>
           </SidebarProvider>
-          <div class="ml-180 -mt-120">
+          <div class="lg:ml-180 ml-20 -mt-140 lg:-mt-120">
 
               <Button class="px-20 bg-green-300 text-black hover:bg-green-500 cursor-pointer" @click="startTest" v-if="!showExistingQuestion">Start Test</Button>
           </div>
-          
-              <div v-if="showExistingQuestion" class="ml-80  pb-10" >
+              <div v-if="showExistingQuestion" class="lg:ml-80 ml-8  pb-10" >
                 <div class="flex">
 
                     <div class="text-xl font-bold text-red-600 mb-4 ">
                Time Left: {{ formattedTime }}
              </div>
-             <div v-if="submitted" class="text-xl font-bold text-blue-700 mb-2 ml-190">
+             <!-- <div v-if="submitted" class="text-xl font-bold text-blue-700 mb-2 lg:ml-190 ml-20">
   Score: {{ correctCount }} / {{ totalQuestions }}
-</div>
+</div> -->
                 </div>
         <div v-for="question in existingQuestions" :key="question.id" class="mt-4">
             <Card class=" w-2/3">
@@ -53,19 +52,40 @@
             <!-- <button @click="submitAnswers(question.id)">Submit</button> -->
         </div>
          <div class="mt-10 flex ">
+                 <AlertDialog class="mt-100 lg:ml-100">
+    <AlertDialogTrigger as-child>
+    <Button variant="outline">
+        Submit Test
+      </Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent class="-mt-140 w-1/3 -ml-75 lg:-mt-10 lg:ml-20">
+      <AlertDialogHeader>
+        <AlertDialogTitle class="text-sm">Are you absolutely sure you want to submit the exam ? <br> this action can't be undone?</AlertDialogTitle>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel class="w-1/3 ml-20">Cancel</AlertDialogCancel>
+      
+ <AlertDialogAction class="ml-20">
         <Button
-          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 "
+          class="px-6 py-2 "
           @click="submitAnswers"
           :disabled="timeLeft <= 0 || submitted"
         >
           Submit Answers
         </Button>
+ </AlertDialogAction>
+     
+      
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+      
       </div>
    <div v-if="submitted" class="mt-6 text-green-700 font-bold">
   ✅ Test submitted successfully! <br>
-        <div v-if="submitted" class="text-xl font-bold text-blue-700 mb-2 mt-5">
+        <!-- <div v-if="submitted" class="text-xl font-bold text-blue-700 mb-2 mt-5">
   Score: {{ correctCount }} / {{ totalQuestions }}
-</div>
+</div> -->
 </div>
       <div v-if="timeLeft <= 0" class="mt-6 text-red-700 font-bold">
          ⏰ Time is up! Test closed.
@@ -96,6 +116,25 @@ import { useRouter } from "vue-router";
 import { ref,onMounted,computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import axios from 'axios';
+import { Form } from 'vee-validate';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import router from '@/router';
+const modelresult = ref({
+  result:{
+    student_id:localStorage.getItem("studentID"),
+    score:0
+  }
+})
 const totalQuestions = computed(() => Object.keys(answerKey.value).length)
 const showExistingQuestion = ref(false)
 const existingQuestions = ref([]);
@@ -158,7 +197,7 @@ const startTest = () => {
 const fetchQuestions = async () => {
   try {
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/questions?page=${currentPage.value}&per_page=${perPage.value}`
+      `https://kalkidan.net/api/questions?page=${currentPage.value}&per_page=${perPage.value}`
     )
     existingQuestions.value = data.questions.data
     lastPage.value = data.questions.last_page
@@ -192,23 +231,25 @@ const computeScore = () => {
     }
   })
 }
+
 const submitAnswers = async () => {
   submitted.value = true
   clearInterval(timerInterval)
 
   computeScore()
-
+const formData = new FormData()
+   formData.append("student_id", modelresult.value.result.student_id)
+   formData.append("score", correctCount.value)
+   modelresult.value.result.score = correctCount.value
+   console.log('result',modelresult.value.result)
   try {
-    await axios.post('http://127.0.0.1:8000/api/submit-answers', {
-      answers: selectedAnswers.value,
-      correct: correctCount.value,
-      wrong: wrongCount.value,
-      unanswered: unansweredCount.value
-    })
+    await axios.post('https://kalkidan.net/api/results', formData)
+    router.push('/show-result')
   } catch (error) {
     console.error('Error submitting answers:', error)
   }
 }
+  
 
 const nextPage = (page) => {
     if (page < 1 || page > lastPage.value) {

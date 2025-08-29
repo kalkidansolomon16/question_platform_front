@@ -53,7 +53,7 @@ const postQuestions = async () => {
     formData.append('question_text', model.value.questions.question_text);
     formData.append('points', model.value.questions.points);
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/questions', formData);
+    const response = await axios.post('https://kalkidan.net/api/questions', formData);
     console.log('Question posted:', response.data);
      showOptions.value = true;
      console.log('Question ID stored in localStorage:', response.data.question.id);
@@ -73,7 +73,7 @@ const postChoices  = async()=>{
         }))
     };
     try {
-        const response = await axios.post('http://127.0.0.1:8000/api/choices', payload);
+        const response = await axios.post('https://kalkidan.net/api/choices', payload);
         console.log('Choices posted:', response.data);
         fetchQuestions();
         showOptions.value = false;
@@ -93,7 +93,7 @@ const perPage = ref(3);
 const lastPage = ref(1);
 const fetchQuestions = async () => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/questions?page=${currentPage.value}&per_page=${perPage.value}`);
+    const response = await axios.get(`https://kalkidan.net/api/questions?page=${currentPage.value}&per_page=${perPage.value}`);
     console.log('Fetched questions:', response.data.questions.data);
     existingQuestions.value = response.data.questions.data;
     lastPage.value = response.data.questions.last_page;

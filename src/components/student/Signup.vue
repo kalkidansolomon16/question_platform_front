@@ -42,7 +42,7 @@ const registerStudent = async()=>{
    formData.append("phone", model.value.student.phone)
    formData.append("address", model.value.student.address)
 
-    const response = await axios.post("http://127.0.0.1:8000/api/students", formData)
+    const response = await axios.post("https://kalkidan.net/api/students", formData)
     console.log('student',response.data)
     if(response){
 
@@ -62,7 +62,7 @@ const registerStudent = async()=>{
 
 <template>
 
-  <div :class="cn('flex flex-col gap-6', props.class)" class="w-1/4 bg-white p-5 rounded-md">
+  <div :class="cn('flex flex-col gap-6', props.class)" class="lg:w-1/4 w-11/11 md:w-5/11 md:-ml-190 -ml-240 lg:ml-10 bg-white p-5 rounded-md">
     <FormField name="username" v-slot="{ componentField }">
       <FormItem>
         <FormLabel>Username</FormLabel>

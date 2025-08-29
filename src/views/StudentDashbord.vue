@@ -29,7 +29,7 @@ import { useRouter } from "vue-router";
 
 const getTotalQuestions = async()=>{
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/questioncount');
+    const response = await axios.get('https://kalkidan.net/api/questioncount');
     totalQuestions.value = response.data.count;
   } catch (error) {
     console.error('Error fetching total questions:', error);
@@ -63,18 +63,18 @@ onMounted(() => {
           </main>
         </SidebarProvider>
 
-        <div class="ml-120 -mt-140 w-1/2">
+        <div class="lg:ml-120 -mt-140 lg:w-1/2 w-3/4 ml-12">
 
             <Card>
       <CardHeader>
         <CardTitle>Profile</CardTitle>
     
       </CardHeader>
-      <div class="flex">
+      <div class="lg:flex">
 <div>
     <img src="/a65833dae88d5a86fa17ff09a78305ae.jpg" alt="" class="w-2/3 ml-5 rounded-sm">
 </div>
-<div class="-ml-40 mt-10">
+<div class="lg:-ml-40 ml-16 mt-10">
    <CardDescription>
       Name:
     </CardDescription>

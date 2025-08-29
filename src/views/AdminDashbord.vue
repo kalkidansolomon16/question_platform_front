@@ -28,7 +28,7 @@ const totalQuestions = ref(0)
 import { useRouter } from "vue-router";
 const getTotalStudents = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/studentcount');
+    const response = await axios.get('https://kalkidan.net/api/studentcount');
     totalStudents.value = response.data.count;
   } catch (error) {
     console.error('Error fetching total students:', error);
@@ -36,7 +36,7 @@ const getTotalStudents = async () => {
 }
 const getTotalQuestions = async()=>{
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/questioncount');
+    const response = await axios.get('https://kalkidan.net/api/questioncount');
     totalQuestions.value = response.data.count;
   } catch (error) {
     console.error('Error fetching total questions:', error);
@@ -81,10 +81,10 @@ onMounted(() => {
             <RouterView />
           </main>
         </SidebarProvider>
-            <div class="flex w-2/3 mt-10">
+            <div class="flex lg:w-2/3 mt-10 w-11/11 justify-between">
     <div>
 
-        <Card class="-mt-150 ml-80 w-2/3 z-0">
+        <Card class="-mt-150 lg:ml-80 lg:w-2/3 w-15/11 z-0">
         <CardHeader>
             <CardTitle>Students</CardTitle>
         
@@ -98,7 +98,7 @@ onMounted(() => {
     </div>
     <div>
 
-    <Card class="-mt-150 ml-80 w-2/3">
+    <Card class="-mt-150 lg:ml-80 lg:w-2/3 w-15/11">
 <CardHeader>
 <CardTitle>Questions</CardTitle>
 </CardHeader>

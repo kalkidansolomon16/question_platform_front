@@ -34,7 +34,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <div :class="cn('flex flex-col gap-6', props.class)" class="w-1/4">
+  <div :class="cn('flex flex-col gap-6', props.class)" class="lg:w-1/4 ml-5 lg:ml-1 w-6/7 md:w-1/2 md:ml-40">
     <Card>
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>

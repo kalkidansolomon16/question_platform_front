@@ -33,35 +33,35 @@ import { Button } from "@/components/ui/button"
 </script>
 
 <template>
-  <Menubar class="px-3 py-8 fixed w-9/9 z-10">
+  <Menubar class="lg:px-3 px-6 py-8 lg:fixed lg:w-9/9 -ml-63 lg:ml-1 z-0 ">
     <MenubarMenu>
-      <MenubarTrigger><img src="/Screenshot 2025-08-22 151651.png" alt="" class="w-1/2"></MenubarTrigger>
+      <MenubarTrigger><img src="/Screenshot 2025-08-22 151651.png" alt="" class="lg:w-1/2 w-1/3"></MenubarTrigger>
 
     </MenubarMenu>
     <MenubarMenu class="">
-      <MenubarTrigger class="ml-100">admin</MenubarTrigger>
+      <MenubarTrigger class="lg:ml-100 -ml-80">admin</MenubarTrigger>
     </MenubarMenu>
 
     <MenubarMenu class="">
-       <AlertDialog class="mt-100 ml-100">
+       <AlertDialog class="mt-100 lg:ml-100">
     <AlertDialogTrigger as-child>
       <Button variant="outline">
         Log out
       </Button>
     </AlertDialogTrigger>
-    <AlertDialogContent>
+    <AlertDialogContent class="-mt-140 w-1/3 -ml-75 lg:-mt-10 lg:ml-20">
       <AlertDialogHeader>
-        <AlertDialogTitle>Are you absolutely sure you want to log out?</AlertDialogTitle>
+        <AlertDialogTitle class="text-sm">Are you absolutely sure you want to log out?</AlertDialogTitle>
         <!-- <AlertDialogDescription>
           This action cannot be undone. This will permanently delete your
           account and remove your data from our servers.
         </AlertDialogDescription> -->
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogCancel class="w-1/3 ml-20">Cancel</AlertDialogCancel>
         <div @click="authStore.logout">
 
-          <AlertDialogAction >Continue</AlertDialogAction>
+          <AlertDialogAction class="ml-20">Continue</AlertDialogAction>
         </div>
       </AlertDialogFooter>
     </AlertDialogContent>
